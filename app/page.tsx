@@ -1,16 +1,34 @@
-import Image from "next/image";
-import Logo from "./components/Logo/Logo";
-import Loading from "./components/Loading/Loading";
+'use client'
+import { useState } from 'react';
+import Logo from './components/Logo/Logo';
+import Loading from './components/Loading/Loading';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="">
-      <main className="">
-          <Logo />
+    <>
+      {isLoading && (
+        <Loading onComplete={() => setIsLoading(false)} />
+      )}
+      
+      <main className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
+        <header className="header">
+          <div className="container">
+            <nav className="nav">
+              <Logo />
+              
 
-          <Loading />
-
+            </nav>
+          </div>
+        </header>
+        
+        <section className="section hero">
+          <div className="container">
+            <h1>hello</h1>
+          </div>
+        </section>
       </main>
-    </div>
+    </>
   );
 }

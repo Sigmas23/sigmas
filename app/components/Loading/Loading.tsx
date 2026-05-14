@@ -2,7 +2,11 @@
 import { useState, useEffect } from 'react';
 import './styles.css';
 
-const Loading = () => {
+interface LoadingProps {
+  onComplete?: () => void;
+}
+
+const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
   const [cursorPos, setCursorPos] = useState(0);
   const [progress, setProgress] = useState(0);
   const [statusCode, setStatusCode] = useState('INIT');
@@ -51,6 +55,7 @@ const Loading = () => {
           setIsFadingOut(true);
           setTimeout(() => {
             setIsVisible(false);
+            onComplete?.(); 
           }, 1000);
         }, 1200);
       }
