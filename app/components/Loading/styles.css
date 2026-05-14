@@ -1,0 +1,225 @@
+/* styles.css — обновлённый Fallout-терминал */
+
+.fallout-terminal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0B1121; /* глубокий синий вместо чёрного */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+.terminal-screen {
+  width: 90%;
+  max-width: 680px;
+  padding: 40px 30px;
+  background: #0B1121;
+  border: 1px solid #1E2D45; /* тонкая граница вместо зелёной */
+  color: #E2E8F0; /* тёплый серый вместо зелёного */
+  font-size: 15px;
+  line-height: 1.7;
+  position: relative;
+}
+
+/* Scanline — едва заметный */
+.terminal-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+/* Заголовок */
+.terminal-header {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1E2D45;
+}
+
+.header-line {
+  color: #94A3B8;
+  font-size: 12px;
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Команда */
+.command-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.prompt {
+  color: #3B82F6; /* синий акцент */
+}
+
+.command-text {
+  color: #E2E8F0;
+}
+
+.command-result {
+  color: #22C55E; /* зелёный — успех */
+  font-size: 13px;
+  margin-left: 24px;
+}
+
+/* Статус */
+.status-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid #1E2D45;
+  background: rgba(21, 29, 46, 0.5); /* Surface */
+}
+
+.status-line {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.status-label {
+  color: #94A3B8;
+  min-width: 90px;
+  font-weight: 500;
+}
+
+.status-value {
+  color: #E2E8F0;
+}
+
+.status-value.message {
+  color: #94A3B8;
+}
+
+/* Прогресс-бар */
+.progress-container {
+  margin-top: 16px;
+}
+
+.progress-frame {
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.progress-bracket {
+  color: #94A3B8;
+}
+
+.progress-filled {
+  color: #3B82F6; /* синий вместо зелёного */
+}
+
+.progress-empty {
+  color: #1E2D45; /* тёмная граница */
+}
+
+/* Завершение */
+.complete-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid #1E2D45;
+  background: rgba(21, 29, 46, 0.5);
+}
+
+.complete-line {
+  color: #94A3B8;
+  font-size: 13px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.complete-line:nth-child(2) {
+  color: #22C55E;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Мигающий курсор */
+.input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cursor {
+  color: #E2E8F0;
+  animation: blink 1s step-end infinite;
+}
+
+/* Анимации */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes terminalPowerOff {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .terminal-screen {
+    padding: 24px 20px;
+    font-size: 14px;
+  }
+  
+  .header-line {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  
+  .status-line {
+    font-size: 12px;
+  }
+  
+  .status-label {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-screen {
+    padding: 20px 16px;
+    font-size: 13px;
+  }
+  
+  .header-line {
+    font-size: 10px;
+  }
+  
+  .status-section {
+    padding: 12px;
+  }
+  
+  .status-label {
+    min-width: 60px;
+  }
+}
