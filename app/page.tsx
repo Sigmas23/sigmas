@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react';
-import Logo from './components/Logo/Logo';
 import Loading from './components/Loading/Loading';
+import HeroMain from './components/Heros/HeroMain';
+import SecondHero from './components/Heros/HeroSecond';
+import Nav from './components/Nav/Nav';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,23 +14,14 @@ export default function Home() {
         <Loading onComplete={() => setIsLoading(false)} />
       )}
       
-      <main className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
-        <header className="header">
+      <main id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
           <div className="container">
-            <nav className="nav">
-              <Logo />
-              
+              <Nav />
+              <HeroMain />
+              <SecondHero />
+          </div>
 
-            </nav>
-          </div>
-        </header>
-        
-        <section className="section hero">
-          <div className="container">
-            <h1>hello</h1>
-          </div>
-        </section>
-      </main>
+       </main>
     </>
   );
 }
