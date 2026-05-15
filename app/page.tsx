@@ -15,11 +15,19 @@ export default function Home() {
       )}
       
       <main id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
+        <header className="header">
           <div className="container">
               <Nav />
               <HeroMain />
               <SecondHero />
           </div>
+        </header>
+        
+        <section className="section hero" id='services'>
+          <div className="container">
+            <h1>hello</h1>
+          </div>
+        </section>
 
        </main>
     </>
