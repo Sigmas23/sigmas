@@ -16,17 +16,15 @@ export default function Home() {
         <Loading onComplete={() => setIsLoading(false)} />
       )}
       
-      <main id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
-        <header className="header">
-          <div className="container  gap-[3000px]">
+      <div id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
+          <div className="container">
               <Nav />
               <HeroMain />
               <SecondHero />
               <Services />
               <Footer />
           </div>
-        </header>
-       </main>
+       </div>
     </>
   );
 }
