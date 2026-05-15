@@ -15,7 +15,7 @@ export default function HeroMain() {
             </div>
             
             <h1 className="font-display font-extrabold text-[#E2E8F0] leading-[0.92] tracking-[-1.5px] text-center lg:text-left
-              text-[48px] 
+              text-[30px] 
               sm:text-[48px] 
               lg:text-[72px] 
               xl:text-[85px]">

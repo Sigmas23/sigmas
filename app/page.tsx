@@ -4,6 +4,7 @@ import Loading from './components/Loading/Loading';
 import HeroMain from './components/Heros/HeroMain';
 import SecondHero from './components/Heros/HeroSecond';
 import Nav from './components/Nav/Nav';
+import Services from './components/Services/Services';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,19 +17,13 @@ export default function Home() {
       
       <main id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
         <header className="header">
-          <div className="container">
+          <div className="container  gap-[3000px]">
               <Nav />
               <HeroMain />
               <SecondHero />
+              <Services />
           </div>
         </header>
-        
-        <section className="section hero" id='services'>
-          <div className="container">
-            <h1>hello</h1>
-          </div>
-        </section>
-
        </main>
     </>
   );
