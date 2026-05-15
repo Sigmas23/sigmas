@@ -5,6 +5,7 @@ import HeroMain from './components/Heros/HeroMain';
 import SecondHero from './components/Heros/HeroSecond';
 import Nav from './components/Nav/Nav';
 import Services from './components/Services/Services';
+import Footer from './components/Footer/Footer';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,7 @@ export default function Home() {
               <HeroMain />
               <SecondHero />
               <Services />
+              <Footer />
           </div>
         </header>
        </main>
