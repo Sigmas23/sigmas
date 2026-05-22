@@ -10,12 +10,11 @@ import Footer from './components/Footer/Footer';
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
-  return (
-    <>
-      {isLoading && (
+  if(isLoading) {
         <Loading onComplete={() => setIsLoading(false)} />
-      )}
-      
+  }
+
+  return (
       <div id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
           <div className="container">
               <Nav />
@@ -25,6 +24,5 @@ export default function Home() {
               <Footer />
           </div>
        </div>
-    </>
   );
 }
