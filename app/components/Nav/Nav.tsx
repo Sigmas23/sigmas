@@ -12,7 +12,8 @@ export default function Nav() {
 
     return (
         <nav 
-            className="sticky top-0 z-50 w-full bg-[#0B1121]/80 backdrop-blur-md border-b border-[#1E2D45]"
+            className="sticky top-0 z-50 w-full bg-[#0B1121] backdrop-blur-md border-b border-[#1E2D45]"
+            style={{ paddingTop: 'env(safe-area-inset-top)' }}
         >
             <div className="w-full">
                 <div className="flex items-center justify-between h-[90px] max-w-[1200px] ">
