@@ -11,7 +11,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   if(isLoading) {
-        <Loading onComplete={() => setIsLoading(false)} />
+      return <Loading onComplete={() => setIsLoading(false)} />
   }
 
   return (
