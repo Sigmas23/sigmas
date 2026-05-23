@@ -82,7 +82,6 @@ export default function Services() {
         <div className="flex flex-col gap-28 lg:gap-36">
           {services.map((category, catIdx) => (
             <div key={catIdx}>
-              {/* Заголовок категории с линией */}
               <div className="flex items-center gap-4 mb-10 lg:mb-14">
                 <span className="font-mono text-xs text-[#3B82F6] tracking-[4px] uppercase">
                   {String(catIdx + 1).padStart(2, '0')}

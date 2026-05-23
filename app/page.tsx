@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-      <div id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`}>
+      <div id='head' className={`main-content ${!isLoading ? 'content-visible' : ''}`} style={{ paddingTop: 'env(safe-area-inset-top)' }} >
           <div className="container">
               <Nav />
               <HeroMain />
