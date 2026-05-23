@@ -12,7 +12,7 @@ export default function Nav() {
 
     return (
         <nav 
-            className="sticky top-0 z-50 w-full bg-[#0B1121] backdrop-blur-md border-b border-[#1E2D45]"
+            className="top-0 z-50 w-full bg-[#0B1121] backdrop-blur-md border-b border-[#1E2D45]"
             style={{ paddingTop: 'env(safe-area-inset-top)' }}
         >
             <div className="w-full">
