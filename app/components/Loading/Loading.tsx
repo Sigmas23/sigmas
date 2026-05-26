@@ -16,14 +16,14 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
   
   const fullCommand = "sudo service sigma start";
   const [displayed, setDisplayed] = useState("");
-  const totalDuration = 3000;
+  const totalDuration = 2100; // уменьшено на 30% (было 3000)
 
   useEffect(() => {
     if (cursorPos < fullCommand.length) {
       const timer = setTimeout(() => {
         setDisplayed(fullCommand.slice(0, cursorPos + 1));
         setCursorPos(cursorPos + 1);
-      }, 80);
+      }, 56); // уменьшено на 30% (было 80)
       return () => clearTimeout(timer);
     } else {
       setIsTypingComplete(true);
@@ -56,27 +56,27 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
           setTimeout(() => {
             setIsVisible(false);
             onComplete?.(); 
-          }, 1000);
-        }, 1200);
+          }, 800); // уменьшено для плавного исчезновения
+        }, 800); // уменьшено на 30% (было 1200)
       }
-    }, 50);
+    }, 35); // уменьшено на 30% (было 50)
 
     return () => clearInterval(interval);
   }, [isTypingComplete]);
 
   const statusMessages = [
-    { code: 'INIT', msg: 'Initializing SigmaService...' },
-    { code: 'LOAD', msg: 'Loading kernel modules...' },
-    { code: 'CONF', msg: 'Configuring environment...' },
-    { code: 'AUTH', msg: 'Authenticating protocols...' },
-    { code: 'SYNC', msg: 'Syncing databases...' },
-    { code: 'REND', msg: 'Rendering interface...' },
-    { code: 'OK', msg: 'SigmaService active' },
+    { code: 'INIT', msg: 'Инициализация' },
+    { code: 'LOAD', msg: 'Загрузка модулей' },
+    { code: 'CONF', msg: 'Настройка среды' },
+    { code: 'AUTH', msg: 'Проверка протоколов' },
+    { code: 'SYNC', msg: 'Синхронизация' },
+    { code: 'REND', msg: 'Подготовка интерфейса' },
+    { code: 'OK', msg: 'Система готова' },
   ];
 
   const currentMessage = statusMessages.find(m => m.code === statusCode) || statusMessages[0];
 
-  const totalBlocks = 25;
+  const totalBlocks = 20; // уменьшено для компактности
   const filledBlocks = Math.floor((progress / 100) * totalBlocks);
   const emptyBlocks = totalBlocks - filledBlocks;
 
@@ -86,8 +86,7 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
     <div className={`fallout-terminal ${isFadingOut ? 'terminal-off' : ''}`}>
       <div className="terminal-screen">
         <div className="terminal-header">
-          <div className="header-line">COPYRIGHT 2020-2077</div>
-          <div className="header-line">-- Sigma Service v2.4.0 --</div>
+          <div className="header-line">SIGMA SERVICE v2.4.0</div>
         </div>
 
         <div className="command-section">
@@ -103,7 +102,7 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
           
           {progress === 100 && (
             <div className="command-result">
-              [OK] Command executed successfully
+              [OK] Готово
             </div>
           )}
         </div>
@@ -111,18 +110,13 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
         {isTypingComplete && (
           <div className="status-section">
             <div className="status-line">
-              <span className="status-label">STATUS:</span>
+              <span className="status-label">СТАТУС:</span>
               <span className="status-value">{statusCode}</span>
             </div>
             
             <div className="status-line">
-              <span className="status-label">MESSAGE:</span>
+              <span className="status-label">ПРОЦЕСС:</span>
               <span className="status-value message">{currentMessage.msg}</span>
-            </div>
-            
-            <div className="status-line">
-              <span className="status-label">PROGRESS:</span>
-              <span className="status-value">{Math.floor(progress)}%</span>
             </div>
 
             <div className="progress-container">
@@ -133,6 +127,7 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
                   <span className="progress-empty">{'░'.repeat(emptyBlocks)}</span>
                 </span>
                 <span className="progress-bracket">]</span>
+                <span className="progress-percent">{Math.floor(progress)}%</span>
               </div>
             </div>
           </div>
@@ -141,16 +136,10 @@ const Loading: React.FC<LoadingProps> = ({ onComplete }) => {
         {progress === 100 && (
           <div className="complete-section">
             <div className="complete-line">
-              ========================================
+              SigmaService активна
             </div>
-            <div className="complete-line">
-              SigmaService is now online
-            </div>
-            <div className="complete-line">
-              Serving 24/7 — All systems nominal
-            </div>
-            <div className="complete-line">
-              ========================================
+            <div className="complete-line small">
+              Готово к работе 24/7
             </div>
           </div>
         )}

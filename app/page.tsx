@@ -6,6 +6,7 @@ import SecondHero from './components/Heros/HeroSecond';
 import Nav from './components/Nav/Nav';
 import Services from './components/Services/Services';
 import Footer from './components/Footer/Footer';
+import FloatingContact from './components/Footer/FloatingContact';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,7 @@ export default function Home() {
               <SecondHero />
               <Services />
               <Footer />
+              <FloatingContact />
           </div>
        </div>
   );

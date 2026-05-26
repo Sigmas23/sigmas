@@ -9,21 +9,27 @@
   justify-content: center;
   z-index: 9999;
   font-family: 'JetBrains Mono', 'Courier New', monospace;
+  transition: opacity 0.8s ease-out;
+}
+
+.fallout-terminal.terminal-off {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .terminal-screen {
   width: 90%;
-  max-width: 680px;
-  padding: 40px 30px;
+  max-width: 520px;
+  padding: 28px 24px;
   background: #0B1121;
-  border: 1px solid #1E2D45; /* тонкая граница вместо зелёной */
-  color: #E2E8F0; /* тёплый серый вместо зелёного */
-  font-size: 15px;
-  line-height: 1.7;
+  border: 1px solid #1E2D45;
+  color: #E2E8F0;
+  font-size: 13px;
+  line-height: 1.6;
   position: relative;
+  transition: all 0.3s ease;
 }
 
-/* Scanline — едва заметный */
 .terminal-screen::before {
   content: '';
   position: absolute;
@@ -41,62 +47,63 @@
   pointer-events: none;
 }
 
-/* Заголовок */
 .terminal-header {
-  margin-bottom: 32px;
-  padding-bottom: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
   border-bottom: 1px solid #1E2D45;
 }
 
 .header-line {
-  color: #94A3B8;
-  font-size: 12px;
-  margin-bottom: 4px;
-  letter-spacing: 2px;
+  color: #3B82F6;
+  font-size: 11px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: 500;
+  text-align: center;
 }
 
-/* Команда */
 .command-line {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .prompt {
-  color: #3B82F6; /* синий акцент */
+  color: #3B82F6;
 }
 
 .command-text {
   color: #E2E8F0;
+  font-size: 13px;
+  word-break: break-all;
 }
 
 .command-result {
-  color: #22C55E; /* зелёный — успех */
-  font-size: 13px;
-  margin-left: 24px;
+  color: #22C55E;
+  font-size: 12px;
+  margin-left: 20px;
 }
 
-/* Статус */
 .status-section {
-  margin-bottom: 24px;
-  padding: 16px;
+  margin-bottom: 20px;
+  padding: 12px;
   border: 1px solid #1E2D45;
-  background: rgba(21, 29, 46, 0.5); /* Surface */
+  background: rgba(21, 29, 46, 0.5);
 }
 
 .status-line {
   display: flex;
   gap: 8px;
-  margin-bottom: 8px;
-  font-size: 13px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  flex-wrap: wrap;
 }
 
 .status-label {
   color: #94A3B8;
-  min-width: 90px;
+  min-width: 70px;
   font-weight: 500;
 }
 
@@ -108,17 +115,18 @@
   color: #94A3B8;
 }
 
-/* Прогресс-бар */
 .progress-container {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .progress-frame {
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1;
   display: flex;
   align-items: center;
+  gap: 8px;
   font-family: 'JetBrains Mono', monospace;
+  flex-wrap: wrap;
 }
 
 .progress-bracket {
@@ -126,35 +134,38 @@
 }
 
 .progress-filled {
-  color: #3B82F6; /* синий вместо зелёного */
+  color: #3B82F6;
 }
 
 .progress-empty {
-  color: #1E2D45; /* тёмная граница */
+  color: #1E2D45;
 }
 
-/* Завершение */
+.progress-percent {
+  color: #94A3B8;
+  font-size: 11px;
+}
+
 .complete-section {
-  margin-bottom: 24px;
-  padding: 16px;
+  margin-bottom: 20px;
+  padding: 12px;
   border: 1px solid #1E2D45;
   background: rgba(21, 29, 46, 0.5);
-}
-
-.complete-line {
-  color: #94A3B8;
-  font-size: 13px;
-  margin-bottom: 4px;
   text-align: center;
 }
 
-.complete-line:nth-child(2) {
+.complete-line {
   color: #22C55E;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  margin-bottom: 4px;
 }
 
-/* Мигающий курсор */
+.complete-line.small {
+  color: #94A3B8;
+  font-size: 11px;
+  margin-bottom: 0;
+}
+
 .input-line {
   display: flex;
   align-items: center;
@@ -166,57 +177,80 @@
   animation: blink 1s step-end infinite;
 }
 
-/* Анимации */
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
 
-@keyframes terminalPowerOff {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
   .terminal-screen {
-    padding: 24px 20px;
-    font-size: 14px;
-  }
-  
-  .header-line {
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-  
-  .status-line {
-    font-size: 12px;
-  }
-  
-  .status-label {
-    min-width: 70px;
-  }
-}
-
-@media (max-width: 480px) {
-  .terminal-screen {
+    max-width: 90%;
     padding: 20px 16px;
-    font-size: 13px;
+    font-size: 12px;
   }
   
   .header-line {
     font-size: 10px;
   }
   
-  .status-section {
-    padding: 12px;
+  .command-text {
+    font-size: 12px;
+  }
+  
+  .status-line {
+    font-size: 11px;
   }
   
   .status-label {
     min-width: 60px;
+  }
+  
+  .progress-frame {
+    font-size: 11px;
+  }
+  
+  .complete-line {
+    font-size: 12px;
+  }
+  
+  .complete-line.small {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-screen {
+    padding: 16px 12px;
+  }
+  
+  .header-line {
+    font-size: 9px;
+  }
+  
+  .command-text {
+    font-size: 11px;
+  }
+  
+  .status-section {
+    padding: 10px;
+  }
+  
+  .status-line {
+    font-size: 10px;
+    gap: 6px;
+  }
+  
+  .status-label {
+    min-width: 50px;
+  }
+  
+  .progress-frame {
+    font-size: 10px;
+    gap: 4px;
+  }
+  
+  .complete-line {
+    font-size: 11px;
   }
 }
