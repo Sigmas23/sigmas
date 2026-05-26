@@ -4,7 +4,8 @@ import {
   HardDrive, FolderSearch, Cloud, Network, Server, PhoneCall, 
   Database, Lock, ShieldAlert, Binary, Bot,
   Waypoints,
-  Brain
+  Brain,
+  Cctv
 } from 'lucide-react'
 
 const services = [
@@ -46,6 +47,7 @@ const services = [
       { icon: Server, title: 'Серверы' },
       { icon: PhoneCall, title: 'IP-телефония' },
       { icon: Database, title: 'Сетевые хранилища' },
+      { icon: Cctv, title: 'Видеонаблюдение' },
     ]
   },
   {
